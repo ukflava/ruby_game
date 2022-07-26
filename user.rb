@@ -1,8 +1,8 @@
 class User
-  attr_accessor :lives
-  # attr_accessor :name, :lives
-  def initialize()
-    # @name = name
+  # attr_accessor :lives
+  attr_accessor :name, :lives
+  def initialize(name)
+    @name = name
     @lives = 3
   end
 # def name 
