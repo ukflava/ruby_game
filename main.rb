@@ -1,6 +1,6 @@
 # require 'pp'
 require './players'
-# require './questions'
+require './questions'
 # require './game'
 
 
