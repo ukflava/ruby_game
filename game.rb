@@ -15,27 +15,42 @@ require './questions'
 
 players = []
 players[0] = User.new
-players[1] = User.new # or AI.new
+players[1] = User.new
 
 current_player = 0
 game_over = false
 
 while !game_over do
+  # players[current_player].make_move
 
-
+  question = Questions.new
+  hidden = question.result
+   
+  puts  " #{players[current_player]}  in #{question.number} plus #{question.number2} "
+  # guess = gets.to_i
+  guess = $stdin.gets.chomp.to_i
+   
+  if guess != hidden
+      puts "Seriously? No!"
+      player2.lives -= 1
+      puts "P1 #{players[0].lives}/3 vs P2 #{players[1].lives}/3 "
+  else
+      puts "Yes! You are correct"
+      puts "P1 #{players[0].lives}/3 vs P2 #{players[1].lives}/3 "
+  end
 
   # the User#make_move and AI#make_move method are where you
   # differentiate between the two - checking for game rules
   # etc. should be the same for either.
-  players[current_player].make_move
 
-  if check_for_game_over
+
+  if players[0].lives < 1 || players[1].lives < 1
     game_over = true
-
+p "game over"
 
   else
 
-    
+
     # general method to cycle the current turn among
     # n players, and wrap around to 0 when the round 
     # ends (here n=2, of course)
@@ -49,21 +64,6 @@ end
 # p player1
 # p player2
 
-question1 = Questions.new
-hidden = question1.result
- 
-puts  " #{player2}  in #{question1.number} plus #{question1.number2} "
-# guess = gets.to_i
-guess = $stdin.gets.chomp.to_i
- 
-if guess != hidden
-    puts "Seriously? No!"
-    player2.lives -= 1
-    puts "P1 #{player1.lives}/3 vs P2 #{player2.lives}/3 "
-else
-    puts "Yes! You are correct"
-    puts "P1 #{player1.lives}/3 vs P2 #{player2.lives}/3 "
-end
 
 # player2.lives -= 1
 
